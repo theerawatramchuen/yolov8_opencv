@@ -1,4 +1,4 @@
-# Installation for Window11 with GPU for non GPU machine pls follow comment in "yolov8-opencv.py"
+# Installation for Window11 (or Ubuntu) with GPU for non GPU machine pls follow comment in "yolov8-opencv.py"
 (base) PS C:\Users\ramch> md project <br/>
 (base) PS C:\Users\ramch> cd project <br/>
 (base) PS C:\Users\ramch\project> conda create -n yolov8 python=3.9 -y <br/>
