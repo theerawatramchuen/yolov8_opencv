@@ -8,9 +8,9 @@
 (yolov8) PS C:\Users\ramch\project>pip install -e '.[dev]' <br/><br/>
 
 # Run yolov8-opencv.py
-1. Download coco.txt <br/><br/>
-2. Download sample video file or use webcam at line 21 cap=cv2.VideoCapture('x') # x = 0 or 'vidyolov8.mp4' or your video file <br/><br/>
-3. python yolov8-opencv.py <br/><br/>
+1. Download coco.txt <br/>
+2. Download sample video file or use webcam at line 21 cap=cv2.VideoCapture('x') # x = 0 or 'vidyolov8.mp4' or your video file <br/>
+3. python yolov8-opencv.py <br/>
 
 ### Installation notes: <br/>
 #### How to fix "AssertionError: Torch not compiled with CUDA enabled" as below pytorch verion to enable cuda device as below test python command line (GPU only) <br/>
