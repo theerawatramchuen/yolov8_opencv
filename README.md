@@ -7,8 +7,21 @@
 (yolov8) PS C:\Users\ramch\project>cd ultralytics <br/>
 (yolov8) PS C:\Users\ramch\project>pip install -e '.[dev]' <br/><br/>
 
-Option : $ pip install torch==1.10.1+cu113 torchvision==0.11.2+cu113 torchaudio==0.10.1+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html ### to fix cuda device not found <br/>
-Option : $ pip install setuptools==59.5.0 ### to fix AttributeError: module 'distutils' has no attribute 'version' : with setuptools 59.6.0 #69894 <br/>
+### Installation notes: <br/>
+#### How to fix "AssertionError: Torch not compiled with CUDA enabled" as below pytorch verion to enable cuda device as below test python command line (GPU only) <br/>
+/>>>import torch<br/>
+/>>>torch.cuda.is_available()<br/>
+False<br/><br/>
+```
+pip3 install torch==1.10.1+cu113 torchvision==0.11.2+cu113 torchaudio===0.10.1+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
+```
+/>>>import torch<br/>
+/>>>torch.cuda.is_available()<br/>
+True<br/><br/>
+
+#### How to fix "ImportError: DLL load failed" while importing win32api on Anaconda Windows<br/>
+conda install pywin32
+
 ## Reference link
 https://docs.ultralytics.com/python/ <br/>
 https://youtu.be/QMBMWvn9DJc <br/>
