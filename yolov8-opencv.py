@@ -35,8 +35,8 @@ while True:
         continue
     results=model.predict(frame)
     # print(results)
-    a=results[0].boxes.boxes                      # For machine without GPU 
-    #a=torch.Tensor.cpu(results[0].boxes.boxes)   # For machine with GPU such as Jetson Nano
+    #a=results[0].boxes.boxes                      # For machine without GPU 
+    a=torch.Tensor.cpu(results[0].boxes.boxes)   # For machine with GPU such as Jetson Nano
     px=pd.DataFrame(a).astype("float")
     for index,row in px.iterrows():
         # print(row)
