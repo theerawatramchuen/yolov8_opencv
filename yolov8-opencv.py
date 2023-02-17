@@ -30,7 +30,7 @@ while True:
     if not ret:
         break
     count += 1
-    if count % 3 != 0:
+    if count % 3 != 0: #Inference every 3 frames
         continue
     start_time = time.time()
     results=model.predict(frame)
