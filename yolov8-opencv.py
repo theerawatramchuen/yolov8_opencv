@@ -1,12 +1,11 @@
-# https://docs.ultralytics.com/python/
 # https://youtu.be/QMBMWvn9DJc
-# https://github.com/freedomwebtech/yolov8-opencv-win11
 #
+import torch
 import cv2
 import numpy as np
-import torch
 import pandas as pd
 from ultralytics import YOLO
+import time
 
 model = YOLO("yolov8n.pt")
 
@@ -18,7 +17,7 @@ def RGB(event, x,y, flags, param):
 cv2.namedWindow('RGB')
 cv2.setMouseCallback('RGB', RGB)
 
-cap=cv2.VideoCapture(0) #'vidyolov8.mp4'
+cap=cv2.VideoCapture(0) #'vidyolov8.mp4'  'rtsp://data_analytic:TcAnTaRa9721881@10.158.8.19'
 
 my_file = open("coco.txt","r")
 data = my_file.read()
@@ -27,16 +26,18 @@ print(class_list)
 count=0
 while True:
     ret,frame = cap.read()
-    frame=cv2.resize(frame,(640,480))
+#    frame=cv2.resize(frame,(640,480))
     if not ret:
         break
     count += 1
     if count % 3 != 0:
         continue
+    start_time = time.time()
     results=model.predict(frame)
-    # print(results)
-    #a=results[0].boxes.boxes                      # For machine without GPU 
-    a=torch.Tensor.cpu(results[0].boxes.boxes)   # For machine with GPU such as Jetson Nano
+    fps = "FPS "+str(round(1/((time.time() - start_time))))
+    print(fps)
+    # a=results[0].boxes.boxes                   # For machine no GPU only
+    a=torch.Tensor.cpu(results[0].boxes.boxes)   # For machine has GPU only such as Jeson Nano
     px=pd.DataFrame(a).astype("float")
     for index,row in px.iterrows():
         # print(row)
@@ -48,6 +49,7 @@ while True:
         c=class_list[d]
         cv2.rectangle(frame,(x1,y1),(x2,y2),(0,255,0),2)
         cv2.putText(frame,str(c),(x1+2,y1-10),cv2.FONT_HERSHEY_COMPLEX,1.0,(0,255,0),2)
+    cv2.putText(frame,str(fps),(2,25),cv2.FONT_HERSHEY_COMPLEX,1.0,(0,255,0),2)
     cv2.imshow("RGB", frame)
     if cv2.waitKey(1)&0xFF==27:
         break
@@ -55,3 +57,4 @@ cap.release()
 cv2.destroyAllWindows()
 
 exit()
+
