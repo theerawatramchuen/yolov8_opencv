@@ -1,3 +1,7 @@
+# Beware!!! Memory Leak Problem
+# Suspected uEYE driver
+
+
 #===========================================================================#
 #                                                                           #
 #  Copyright (C) 2006 - 2018                                                #
