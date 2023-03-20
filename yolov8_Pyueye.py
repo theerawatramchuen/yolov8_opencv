@@ -1,4 +1,4 @@
-# Bug report 20-Mar-2023 : Memory Leak Problem
+# Bug report 20-Mar-2023 : Memory Leak Problem on Jetson Nano 4G 
 # Suspected uEYE driver
 
 
